@@ -3,45 +3,52 @@ My little Stack
 """
 from typing import Any, List
 
-
 _stack: List = []
 
+
 def push(elem: Any) -> None:
-	"""
+    """
 	Operation that add element to stack
 
 	:param elem: element to be pushed
 	:return: Nothing
 	"""
-	_stack.append(elem)
-	print(elem)
-
+    _stack.append(elem)
+    print(elem)
 
 
 def pop() -> Any:
-	"""
+    """
 	Pop element from the top of the stack. If not elements - should return None.
 
 	:return: popped element
 	"""
-	return _stack.pop()
+    if _stack:
+        return _stack.pop()
 
 
 def peek(ind: int = 0) -> Any:
-	"""
+    """
 	Allow you to see at the element in the stack without popping it.
 
 	:param ind: index of element (count from the top, 0 - top, 1 - first from top, etc.)
 	:return: peeked element or None if no element in this place
 	"""
-	print(ind)
-	return None
+
+    print(ind)
+    if ind not in range(len(_stack)):
+        return None
+    else:
+        return _stack[- (ind + 1)]
 
 
 def clear() -> None:
-	"""
+    """
 	Clear my stack
 
 	:return: None
 	"""
-	return None
+
+    if _stack:
+        _stack.clear()
+        return None
